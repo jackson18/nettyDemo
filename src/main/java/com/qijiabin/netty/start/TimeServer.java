@@ -56,9 +56,9 @@ public class TimeServer {
 		protected void initChannel(SocketChannel socketChannel) throws Exception {
 			// 半包处理【基于换行符】
 			socketChannel.pipeline().addLast(new LineBasedFrameDecoder(1024));
-			// 字符串编码
-			socketChannel.pipeline().addLast(new StringDecoder());
 			// 字符串解码
+			socketChannel.pipeline().addLast(new StringDecoder());
+			// 字符串编码
 			socketChannel.pipeline().addLast(new StringEncoder());
 			// 在管道中添加我们自己的接收数据实现方法
 			socketChannel.pipeline().addLast(new TimeServerHandler());
